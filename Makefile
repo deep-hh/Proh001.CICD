@@ -1,16 +1,27 @@
 install:
-\tpip install --upgrade pip && \
-\tpip install -r requirements.txt
+	pip install --upgrade pip &&\
+		pip install -r requirements.txt
 
-format:
-\tblack *.py
+format:	
+	black *.py 
 
 train:
-\tpython train.py
+	python train.py
 
 eval:
-\techo "## Model Metrics" > report.md
-\tcat ./Results/metrics.txt >> report.md
-\techo '\n## Confusion Matrix Plot' >> report.md
-\techo '![Confusion Matrix](./Results/model_results.png)' >> report.md
-\tcml comment create report.md
+	echo "## Model Metrics" > report.md
+	cat ./Results/metrics.txt >> report.md
+	
+	echo '\n## Confusion Matrix Plot' >> report.md
+	echo '![Confusion Matrix](./Results/model_results.png)' >> report.md
+	
+  cml comment create report.md
+		
+update-branch:
+	git config --global user.name $(USER_NAME)
+	git config --global user.email $(USER_EMAIL)
+	git commit -am "Update with new results"
+	git push --force origin HEAD:update
+
+
+all: install format train eval
