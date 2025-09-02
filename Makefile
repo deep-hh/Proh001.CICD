@@ -1,18 +1,16 @@
 install:
-    pip install --upgrade pip &&\
-    pip install -r requirements.txt
+\tpip install --upgrade pip && \
+\tpip install -r requirements.txt
 
 format:
-    black *.py
+\tblack *.py
 
 train:
-    python train.py
+\tpython train.py
 
 eval:
-    echo "## Model Metrics" > report.md
-    cat ./Results/metrics.txt >> report.md
-   
-    echo '\n## Confusion Matrix Plot' >> report.md
-    echo '![Confusion Matrix](./Results/model_results.png)' >> report.md
-   
-    cml comment create report.md
+\techo "## Model Metrics" > report.md
+\tcat ./Results/metrics.txt >> report.md
+\techo '\n## Confusion Matrix Plot' >> report.md
+\techo '![Confusion Matrix](./Results/model_results.png)' >> report.md
+\tcml comment create report.md
