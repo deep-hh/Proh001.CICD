@@ -15,6 +15,6 @@ eval:
 	echo '\n## Confusion Matrix Plot' >> report.md
 	echo '![Confusion Matrix](./Results/model_results.png)' >> report.md
 	
-  cml comment create report.md
+	cml comment create report.md
 
 all: install format train eval
