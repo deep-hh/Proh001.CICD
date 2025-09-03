@@ -18,7 +18,15 @@ trusted_types = [
     "sklearn.ensemble.RandomForestClassifier",
     "numpy.dtype",
 ]
-pipe = sio.load("./Model/drug_pipeline.skops", trusted=trusted_types)
+
+from skops.io import get_untrusted_types, load
+# Step 1: Retrieve a list of types not trusted by default
+untrusted = get_untrusted_types(file="Model/drug_pipeline.skops")
+print("Untrusted types:", untrusted)
+
+# Step 2: After reviewing, load the model by trusting the approved types
+pipe = load("Model/drug_pipeline.skops", trusted=untrusted)
+
 
 
 def predict_drug(age, sex, blood_pressure, cholesterol, na_to_k_ratio):
