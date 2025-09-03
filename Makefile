@@ -35,9 +35,9 @@ hf-login:
 	huggingface-cli login --token $(HF) --add-to-git-credential
 
 push-hub: 
-	huggingface-cli upload deep-hh/Proh001.CICD ./App --repo-type=space --commit-message="Sync App files"
-	huggingface-cli upload deep-hh/Proh001.CICD ./Model /Model --repo-type=space --commit-message="Sync Model"
-	huggingface-cli upload deep-hh/Proh001.CICD ./Results /Metrics --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload hassanh001/Proj001.CICD ./App --repo-type=space --commit-message="Sync App files"
+	huggingface-cli upload hassanh001/Proj001.CICD ./Model /Model --repo-type=space --commit-message="Sync Model"
+	huggingface-cli upload hassanh001/Proj001.CICD ./Results /Metrics --repo-type=space --commit-message="Sync Model"
 
 deploy: hf-login push-hub
 
